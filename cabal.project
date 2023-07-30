@@ -1,0 +1,9 @@
+packages:
+  ebird-api
+  ebird-cli
+  ebird-client
+
+package *
+  ghc-options:
+    -Wall
+    -Wunused-packages

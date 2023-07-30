@@ -1,0 +1,13 @@
+cradle:
+  cabal:
+    - path: "ebird-api/src"
+      component: "lib:ebird-api"
+
+    - path: "ebird-cli"
+      component: "ebird-cli:exe:ebird"
+
+    - path: "ebird-cli/src"
+      component: "lib:ebird-cli"
+
+    - path: "ebird-client/src"
+      component: "lib:ebird-client"
