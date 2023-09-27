@@ -1,5 +1,5 @@
 {-# LANGUAGE DataKinds        #-}
-{-# LANGUAGE TypeApplications #-}
+
 {-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
 {-# HLINT ignore "Eta reduce" #-}
 
@@ -76,8 +76,8 @@ import Data.EBird.Client.Taxonomy
 askEBird :: ClientM a -> IO (Either ClientError a)
 askEBird question = do
     manager' <- newTlsManager
-    runClientM question (mkClientEnv manager' ebirdHQ)
+    runClientM question (mkClientEnv manager' eBirdHQ)
   where
     -- Home of the official eBird API
-    ebirdHQ :: BaseUrl
-    ebirdHQ = BaseUrl Https "api.ebird.org" 443 ""
+    eBirdHQ :: BaseUrl
+    eBirdHQ = BaseUrl Https "api.ebird.org" 443 ""
