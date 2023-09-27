@@ -1,6 +1,6 @@
 cabal-version:      3.0
 name:               ebird-cli
-version:            0.1.0.0
+version:            0.2.0.0
 synopsis:
     A command-line utility for interacting with the
     eBird API.
@@ -35,7 +35,7 @@ common common
       RecordWildCards
     default-language: Haskell2010
 
-executable ebird
+executable ebird-cli
     import: common
     main-is:
         Main.hs
