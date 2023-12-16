@@ -123,7 +123,7 @@ data RegionBounds =
       }
   deriving (Show, Read, Eq)
 
--- | The data structure returned by the eBird 'Data.EBird.API.SubRegionListAPI' and
+-- | The data structure returned by the eBird 'Data.EBird.API.SubregionListAPI' and
 -- 'Data.EBird.API.AdjacentRegionsAPI'.
 data RegionListEntry =
     RegionListEntry

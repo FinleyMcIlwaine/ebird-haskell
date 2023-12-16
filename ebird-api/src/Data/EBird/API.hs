@@ -87,7 +87,7 @@ module Data.EBird.API
     -- section](https://documenter.getpostman.com/view/664302/S1ENwy59#c9947c5c-2dce-4c6d-9911-7d702235506c)
     -- of the eBird API documentation.
   , RegionInfoAPI
-  , SubRegionListAPI
+  , SubregionListAPI
   , AdjacentRegionsAPI
 
     -- * eBird checklists
@@ -194,7 +194,7 @@ type EBirdAPI =
 
     -- Region APIs
     :<|> RegionInfoAPI
-    :<|> SubRegionListAPI
+    :<|> SubregionListAPI
     :<|> AdjacentRegionsAPI
 
 -- | Convenient synonym for requiring an @x-ebirdapitoken@ on a route
@@ -572,7 +572,7 @@ type RegionInfoAPI =
 --
 -- See the [eBird API documentation for this
 -- route](https://documenter.getpostman.com/view/664302/S1ENwy59#382da1c8-8bff-4926-936a-a1f8b065e7d5).
-type SubRegionListAPI =
+type SubregionListAPI =
     "v2" :> "ref" :> "region"
     :> "list"
     :> WithAPIKey

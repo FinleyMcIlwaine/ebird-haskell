@@ -1,5 +1,10 @@
 # Revision history for ebird-cli
 
+## 0.3.0.0 -- 2023-12-16
+
+* Rename subregion items so subregion is one word.
+* Bump `ebird-api` and `ebird-client` constraints.
+
 ## 0.2.0.0 -- 2023-09-27
 
 * Renamed `ebird` executable to `ebird-cli`.

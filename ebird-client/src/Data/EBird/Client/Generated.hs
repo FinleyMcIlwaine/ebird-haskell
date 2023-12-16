@@ -1,7 +1,7 @@
 {-# LANGUAGE DataKinds        #-}
 {-# LANGUAGE TypeApplications #-}
 
-{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
+{-# OPTIONS_GHC -Wno-unrecognised-pragmas -ddump-verbose-inlinings #-}
 {-# HLINT ignore "Eta reduce" #-}
 
 -- |
@@ -56,7 +56,7 @@ module Data.EBird.Client.Generated
 
     -- ** Region queries
   , regionInfo_
-  , subRegionList_
+  , subregionList_
   , adjacentRegions_
   ) where
 
@@ -709,13 +709,13 @@ regionInfo_
   -- /default: 'Full'/
   -> ClientM RegionInfo
 
--- | Get a list of sub-regions of a given region type within a given region.
+-- | Get a list of subregions of a given region type within a given region.
 -- Keep in mind that many combinations of sub region and parent region are
 -- invalid, e.g. 'CountryType' regions within "US-WY".
 --
 -- See the [eBird API documentation for the corresponding
 -- endpoint](https://documenter.getpostman.com/view/664302/S1ENwy59#382da1c8-8bff-4926-936a-a1f8b065e7d5).
-subRegionList_
+subregionList_
   :: Text
   -- ^ eBird API key
   -> RegionType
@@ -760,5 +760,5 @@ recentObservations_
   :<|> taxonomyVersions_
   :<|> taxonomicGroups_
   :<|> regionInfo_
-  :<|> subRegionList_
+  :<|> subregionList_
   :<|> adjacentRegions_ = client (Proxy @EBirdAPI)

@@ -1,6 +1,6 @@
 cabal-version:      3.0
 name:               ebird-client
-version:            0.1.0.0
+version:            0.2.0.0
 synopsis:
     Client functions for querying the eBird API.
 description:
@@ -57,7 +57,7 @@ library
         Data.EBird.Client.Regions
         Data.EBird.Client.Taxonomy
     build-depends:
-      , ebird-api >= 0.1.0.0 && < 0.2
+      , ebird-api >= 0.2.0.0 && < 0.3
 
       , data-default    >= 0.7.1.1 && < 0.8
       , http-client-tls >= 0.3.5.3 && < 0.4

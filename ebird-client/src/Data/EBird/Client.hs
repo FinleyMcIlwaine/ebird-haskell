@@ -50,7 +50,7 @@ module Data.EBird.Client (
 
     -- ** Region queries
   , regionInfo
-  , subRegionList
+  , subregionList
   , adjacentRegions
 
     -- * Less convenient, generated queries

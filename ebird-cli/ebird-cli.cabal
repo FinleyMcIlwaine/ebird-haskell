@@ -1,6 +1,6 @@
 cabal-version:      3.0
 name:               ebird-cli
-version:            0.2.0.0
+version:            0.3.0.0
 synopsis:
     A command-line utility for interacting with the
     eBird API.
@@ -47,8 +47,8 @@ library
     exposed-modules:
         Data.EBird.CLI
     build-depends:
-        ebird-api    >= 0.1.0.0 && < 0.2
-      , ebird-client >= 0.1.0.0 && < 0.2
+        ebird-api    >= 0.2.0.0 && < 0.3
+      , ebird-client >= 0.2.0.0 && < 0.3
 
       , aeson                >= 1.5.6.0   && < 2.2
       , aeson-pretty         >= 0.8.8     && < 0.9

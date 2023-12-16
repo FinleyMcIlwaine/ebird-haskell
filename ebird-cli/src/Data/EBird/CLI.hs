@@ -63,7 +63,7 @@ eBirdCli = do
     opts =
       info
         (eBirdCommand <**> helper)
-        (    header "ebird - Go birding on your command line!"
+        (    header "ebird-cli - Go birding on your command line!"
           <> progDesc "Query the official eBird API"
         )
 
@@ -98,7 +98,7 @@ runEBirdCommand getAPIKey = \case
           recentObservationsHotspots
           recentObservationsProvisionals
           recentObservationsMaxResults
-          recentObservationsSubRegions
+          recentObservationsSubregions
           recentObservationsSPPLocale
       handleResponse res
 
@@ -111,7 +111,7 @@ runEBirdCommand getAPIKey = \case
           recentNotableObservationsDetail
           recentNotableObservationsHotspots
           recentNotableObservationsMaxResults
-          recentNotableObservationsSubRegions
+          recentNotableObservationsSubregions
           recentNotableObservationsSPPLocale
       handleResponse res
 
@@ -125,7 +125,7 @@ runEBirdCommand getAPIKey = \case
           recentSpeciesObservationsHotspots
           recentSpeciesObservationsProvisionals
           recentSpeciesObservationsMaxResults
-          recentSpeciesObservationsSubRegions
+          recentSpeciesObservationsSubregions
           recentSpeciesObservationsSPPLocale
       handleResponse res
 
@@ -204,7 +204,7 @@ runEBirdCommand getAPIKey = \case
           historicalObservationsProvisionals
           historicalObservationsMaxResults
           historicalObservationsRank
-          historicalObservationsSubRegions
+          historicalObservationsSubregions
           historicalObservationsSPPLocale
       handleResponse res
 
@@ -322,12 +322,12 @@ runEBirdCommand getAPIKey = \case
           regionInfoRegionNameFormat
       handleResponse res
 
-    SubRegionListCommand SubRegionListOptions{..} -> do
+    SubregionListCommand SubregionListOptions{..} -> do
       apiKey <- getAPIKey
       res <- askEBird $
-        subRegionList apiKey
-          subRegionListRegionType
-          subRegionListParentRegionCode
+        subregionList apiKey
+          subregionListRegionType
+          subregionListParentRegionCode
       handleResponse res
 
     AdjacentRegionsCommand AdjacentRegionsOptions{..} -> do
@@ -389,7 +389,7 @@ data EBirdCommand
     | TaxonomyVersionsCommand
     | TaxonomicGroupsCommand TaxonomicGroupsOptions
     | RegionInfoCommand RegionInfoOptions
-    | SubRegionListCommand SubRegionListOptions
+    | SubregionListCommand SubregionListOptions
     | AdjacentRegionsCommand AdjacentRegionsOptions
   deriving (Show, Eq)
 
@@ -402,7 +402,7 @@ data RecentObservationsOptions =
       , recentObservationsHotspots :: Maybe Bool
       , recentObservationsProvisionals :: Maybe Bool
       , recentObservationsMaxResults :: Maybe Integer
-      , recentObservationsSubRegions :: Maybe RegionCode
+      , recentObservationsSubregions :: Maybe RegionCode
       , recentObservationsSPPLocale :: Maybe SPPLocale
       }
   deriving (Show, Read, Eq)
@@ -415,7 +415,7 @@ data RecentNotableObservationsOptions =
       , recentNotableObservationsDetail :: Maybe DetailLevel
       , recentNotableObservationsHotspots :: Maybe Bool
       , recentNotableObservationsMaxResults :: Maybe Integer
-      , recentNotableObservationsSubRegions :: Maybe RegionCode
+      , recentNotableObservationsSubregions :: Maybe RegionCode
       , recentNotableObservationsSPPLocale :: Maybe SPPLocale
       }
   deriving (Show, Read, Eq)
@@ -429,7 +429,7 @@ data RecentSpeciesObservationsOptions =
       , recentSpeciesObservationsHotspots :: Maybe Bool
       , recentSpeciesObservationsProvisionals :: Maybe Bool
       , recentSpeciesObservationsMaxResults :: Maybe Integer
-      , recentSpeciesObservationsSubRegions :: Maybe RegionCode
+      , recentSpeciesObservationsSubregions :: Maybe RegionCode
       , recentSpeciesObservationsSPPLocale :: Maybe SPPLocale
       }
   deriving (Show, Read, Eq)
@@ -507,7 +507,7 @@ data HistoricalObservationsOptions =
       , historicalObservationsProvisionals :: Maybe Bool
       , historicalObservationsMaxResults :: Maybe Integer
       , historicalObservationsRank :: Maybe SelectObservation
-      , historicalObservationsSubRegions :: Maybe RegionCode
+      , historicalObservationsSubregions :: Maybe RegionCode
       , historicalObservationsSPPLocale :: Maybe SPPLocale
       }
   deriving (Show, Read, Eq)
@@ -630,15 +630,15 @@ data RegionInfoOptions =
       }
   deriving (Show, Read, Eq)
 
--- | Options for the @sub-regions@ command.
-data SubRegionListOptions =
-    SubRegionListOptions
-      { subRegionListParentRegionCode :: RegionCode
-      , subRegionListRegionType :: RegionType
+-- | Options for the @subregions@ command.
+data SubregionListOptions =
+    SubregionListOptions
+      { subregionListParentRegionCode :: RegionCode
+      , subregionListRegionType :: RegionType
       }
   deriving (Show, Read, Eq)
 
--- | Options for the @sub-regions@ command.
+-- | Options for the @subregions@ command.
 newtype AdjacentRegionsOptions =
     AdjacentRegionsOptions
       { adjacentRegionsRegion :: Region
@@ -699,7 +699,7 @@ eBirdCommand =
               (
                    commandGroup "Region commands:"
                 <> command "region-info" regionInfoInfo
-                <> command "sub-regions" subRegionsInfo
+                <> command "subregions" subregionsInfo
                 <> command "adjacent-regions" adjacentRegionsInfo
                 <> hidden
               )
@@ -854,11 +854,11 @@ eBirdCommand =
         (RegionInfoCommand <$> regionInfoOptions)
         (progDesc "Get information about a region")
 
-    subRegionsInfo :: ParserInfo EBirdCommand
-    subRegionsInfo =
+    subregionsInfo :: ParserInfo EBirdCommand
+    subregionsInfo =
       info
-        (SubRegionListCommand <$> subRegionListOptions)
-        (progDesc "Get the list of sub-regions within a region")
+        (SubregionListCommand <$> subregionListOptions)
+        (progDesc "Get the list of subregions within a region")
 
     adjacentRegionsInfo :: ParserInfo EBirdCommand
     adjacentRegionsInfo =
@@ -1438,15 +1438,15 @@ regionInfoOptions =
     <*> optional regionNameFormat
     <**> helper
 
--- | Parse the options for the @sub-regions@ command.
-subRegionListOptions :: Parser SubRegionListOptions
-subRegionListOptions =
-        SubRegionListOptions
+-- | Parse the options for the @subregions@ command.
+subregionListOptions :: Parser SubregionListOptions
+subregionListOptions =
+        SubregionListOptions
     <$> regionCode
     <*> regionType
     <**> helper
 
--- | Parse the options for the @sub-regions@ command.
+-- | Parse the options for the @subregions@ command.
 adjacentRegionsOptions :: Parser AdjacentRegionsOptions
 adjacentRegionsOptions =
         AdjacentRegionsOptions

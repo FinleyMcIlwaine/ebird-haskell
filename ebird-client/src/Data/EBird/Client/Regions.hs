@@ -96,22 +96,22 @@ makeFieldLabels ''RegionInfoParams
 -- * Sub region list
 -------------------------------------------------------------------------------
 
--- | Get a list of sub-regions of a given region type within a given region.
--- Keep in mind that many combinations of sub-region and parent region are
+-- | Get a list of subregions of a given region type within a given region.
+-- Keep in mind that many combinations of subregion and parent region are
 -- invalid, e.g. 'CountryType' regions within \"US-WY\".
 --
 -- For example, get county sub regions of Wyoming (using @-XOverloadedStrings@):
 --
 -- @
--- askEBird $ subRegionList key Subnational2Type "US-WY"
+-- askEBird $ subregionList key Subnational2Type "US-WY"
 -- @
 --
--- Note that the endpoint for this query is simple enough that 'subRegionList'
--- is equivalent to the generated 'subRegionList_'.
+-- Note that the endpoint for this query is simple enough that 'subregionList'
+-- is equivalent to the generated 'subregionList_'.
 --
 -- See the [eBird API documentation for the corresponding
 -- endpoint](https://documenter.getpostman.com/view/664302/S1ENwy59#382da1c8-8bff-4926-936a-a1f8b065e7d5).
-subRegionList
+subregionList
   :: Text
   -- ^ eBird API key
   -> RegionType
@@ -119,7 +119,7 @@ subRegionList
   -> RegionCode
   -- ^ Parent 'RegionCode'
   -> ClientM [RegionListEntry]
-subRegionList = subRegionList_
+subregionList = subregionList_
 
 -------------------------------------------------------------------------------
 -- * Adjacent regions
