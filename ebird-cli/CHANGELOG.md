@@ -1,5 +1,9 @@
 # Revision history for ebird-cli
 
+## 0.3.0.1 -- 2023-12-16
+
+* Bump dependency on `ebird-client`.
+
 ## 0.3.0.0 -- 2023-12-16
 
 * Rename subregion items so subregion is one word.

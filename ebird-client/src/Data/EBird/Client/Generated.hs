@@ -1,7 +1,6 @@
 {-# LANGUAGE DataKinds        #-}
 {-# LANGUAGE TypeApplications #-}
 
-{-# OPTIONS_GHC -Wno-unrecognised-pragmas -ddump-verbose-inlinings #-}
 {-# HLINT ignore "Eta reduce" #-}
 
 -- |

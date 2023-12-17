@@ -1,6 +1,6 @@
 cabal-version:      3.0
 name:               ebird-client
-version:            0.2.0.0
+version:            0.2.0.1
 synopsis:
     Client functions for querying the eBird API.
 description:

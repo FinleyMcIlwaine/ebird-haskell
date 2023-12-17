@@ -1,5 +1,9 @@
 # Revision history for ebird-client
 
+## 0.2.0.1 -- 2023-12-17
+
+* Remove some leftover GHC options.
+
 ## 0.2.0.0 -- 2023-12-16
 
 * Rename subregion items so that subregion is one word.
